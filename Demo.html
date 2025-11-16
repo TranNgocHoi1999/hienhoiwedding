@@ -1,0 +1,778 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="https://api.vesey.vn/templates/wendola1/bootstrap.min.css" rel="stylesheet">
+  <link href="https://api.vesey.vn/templates/wendola1/style.css" rel="stylesheet">
+
+  <link rel="shortcut icon" href="https://html.kodesolution.com/2023/wendola-html/images/favicon.png"
+    type="image/x-icon">
+  <link rel="icon" href="https://html.kodesolution.com/2023/wendola-html/images/favicon.png" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <style>
+    figure img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon-flowers-1 {
+      background-image: url('http://127.0.0.1:5500/frameavt.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .bg-pattern-1 {
+      background-image: url('http://127.0.0.1:5500/banner.png');
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-size: cover;
+    }
+
+    .banner-section{
+      position: relative;
+      padding: 220px 0 440px;
+      background: linear-gradient(180deg, rgba(178,34,34,0.95) 0%, rgba(250,218,221,0.9) 100%);
+    }
+
+    .icon-heart {
+      background-image: url('http://127.0.0.1:5500/hienhoi.png');
+      width: 360px;
+      height: 264px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @media (max-width: 991.98px) {
+    .banner-section .content-box .name .icon-heart {
+    max-width: 300px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+  </style>
+  <style data-font-loader="vesey" data-font-family="sans-serif">
+    @font-face {
+      font-family: 'sans-serif';
+      src: url('https://api.vesey.vn/fonts/UTM_Alter_Gothic.ttf') format('truetype');
+      font-display: swap;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap&amp;subset=vietnamese"
+    data-font-loader="google" data-font-family="Great Vibes">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;display=swap&amp;subset=vietnamese"
+    data-font-loader="google" data-font-family="cursive">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;display=swap&amp;subset=vietnamese"
+    data-font-loader="google" data-font-family="Dancing Script">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;display=swap&amp;subset=vietnamese"
+    data-font-loader="google" data-font-family="serif">
+    <script>
+      window.onload = function () {
+        const sheetURL = 'https://script.google.com/macros/s/AKfycbxhYX045T16CK6oJCRxN2w4h4Nu0FqmJNhE9RY-TEDkVcnjRByj-gyYp4cqGcgRbHTEyQ/exec';
+        const params = new URLSearchParams(window.location.search);
+        const customer = params.get("customer");
+        const locationid = params.get("type");
+
+        var customerLabel = document.getElementById("customer");
+        customerLabel.textContent = '.......... ' + customer + ' ..........';
+
+        var locationComp = document.getElementById('locationName');
+        var locationDetailComp = document.getElementById('locationDetail');
+        // 
+        if(locationid === '1'){
+          locationComp.textContent = 'Tại gia đình Nhà Trai: ';
+          locationDetailComp.textContent = 'Thôn Phạm Khê xã Thanh Miện Tỉnh Hải Phòng';
+        }
+        else {
+          locationComp.textContent = 'Tại gia đình Nhà Gái: ';
+          locationDetailComp.textContent = 'Xóm Cầu Đìa thôn Du Nghệ xã Quốc Oai - Hà Nội';
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+        const SCRIPT_URL = sheetURL;
+
+        const form = document.getElementById("hienhoi-contact");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+            const decision = form.querySelector("input[name='decision']:checked")?.value || "";
+            const guest_of = form.querySelector("input[name='guest_of']:checked")?.value || "";
+
+            const name = form.querySelector(".vs-attendance-name")?.value || "";
+
+            const guest = form.querySelector(".vs-number-of-guests")?.value || "";
+
+            const message = form.querySelector(".vs-attendance-message")?.value || "";
+
+            const data = {
+                decision,
+                name,
+                guest_of,
+                guest,
+                message
+            };
+
+            console.log("Sending:", data);
+
+            fetch(`${sheetURL}?${params}`)
+            .then(res => {
+                console.log("Raw response:", res);
+                return res.json();
+            })
+            .then(response => {
+                console.log("Parsed response:", response);
+                alert("Đã gửi thành công! ❤️");
+                form.reset();
+            })
+            .catch(error => {
+                console.error("Error!", error);
+                alert("Gửi thất bại. Vui lòng thử lại!");
+            });
+        })
+    });
+
+    </script>
+</head>
+
+<body>
+  <div id="fui-toast"></div><input type="hidden" id="vs-start-time" value="2025-11-13 05:06:00">
+  <link rel="stylesheet" href="https://api.vesey.vn/templates/css/vesey.css">
+  <link rel="stylesheet" href="https://api.vesey.vn/templates/css/toast.min.css">
+  <div style="box-sizing: border-box;" class="page-wrapper" data-uuid="65965ec83906a">
+    <div style="box-sizing: border-box; display: none;" id="i7vo" class="preloader" data-uuid="65965ec839077"></div>
+    <section style="box-sizing: border-box;" class="banner-section" data-uuid="65965ec839079" data-movable="true"
+      data-hidable="true">
+      <div style="box-sizing: border-box; visibility: visible; animation-delay: 1500ms; animation-name: fadeIn;"
+        id="itf5e" class="bg bg-pattern-1 wow fadeIn animated animated" data-uuid="65965ec83907a"
+        data-wow-delay="1500ms"></div>
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec83907c">
+        <div style="box-sizing: border-box;" class="row" data-uuid="65965ec83907e">
+          <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec83907f">
+            <div style="box-sizing: border-box; visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;"
+              id="in72q" class="name wow fadeInUp animated animated" data-uuid="65965ec839082" data-wow-delay="300ms">
+              <span style="box-sizing: border-box;" data-uuid="65965ec839084" data-editable="true">Thu Hiền</span><span
+                style="box-sizing: border-box;" class="icon-heart" data-uuid="65965ec839086"></span><span
+                style="box-sizing: border-box;" data-uuid="65965ec839087" data-editable="true">Ngọc Hồi</span></div>
+            <div style="box-sizing: border-box; visibility: visible; animation-delay: 600ms; animation-name: fadeInUp; color: #ffffff;"
+              id="iyo12" class="text wow fadeInUp animated animated" data-uuid="65965ec839089" data-editable="true"
+              data-wow-delay="600ms">
+              Chúng mình cưới!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="countdown-section pt-0" data-uuid="65965ec83908b"
+      data-movable="true" data-hidable="true">
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec83908c">
+        <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInUp;" id="if8wb"
+          class="content-box wow fadeInUp animated animated" data-uuid="65965ec83908e">
+          <div style="box-sizing: border-box;" class="inner-column" data-uuid="65965ec839090">
+            <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec839092">
+              <figure style="box-sizing: border-box;" class="image" data-uuid="65965ec839093"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%;" id="inmyc" data-uuid="65965ec839095" alt=""
+                  src="https://i.pinimg.com/736x/ed/12/fa/ed12facd7ab8c5cbcd187d574d60a55b.jpg" data-editable="true">
+              </figure>
+              <div style="box-sizing: border-box;" class="icon-box" data-uuid="65965ec839096">
+                <div style="box-sizing: border-box;" class="icon-flowers-1" data-uuid="65965ec839098"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="wpo-event-section section-padding" data-uuid="65965ec8390ba"
+      data-hidable="true" data-movable="true" id="invitation">
+      <div style="box-sizing: border-box;" id="ilzek" class="container-fluid" data-uuid="65965ec8390bc">
+        <div style="box-sizing: border-box;" id="i1ugn" class="row" data-uuid="65965ec8390be">
+          <div style="box-sizing: border-box; padding: 0 20px;" id="iaobh"
+            class="col-sm-12 col-lg-6 text-center d-flex flex-column align-items-center" data-uuid="65965ec8390c0">
+            <div style="box-sizing: border-box; max-width: 500px; max-height: 500px;" data-uuid="65965ec8390c3"
+              id="i9c0u"><img style="box-sizing: border-box; width: 100%; height: 100%; object-fit: contain;"
+                data-uuid="65965ec8390c5" id="ir2n7" data-editable="true" src="http://127.0.0.1:5500/savedate.png"></div>
+            <h3 style="box-sizing: border-box;" id="i8k99" class="mt-5 h3" data-uuid="65965ec8390c7"
+              data-editable="true">
+              Ngọc Hồi &amp; Thu Hiền
+            </h3>
+          </div>
+          <div style="box-sizing: border-box;" id="ib8l2" class="col-lg-6 col-sm-12 card-description"
+            data-uuid="65965ec8390ca">
+            <div style="box-sizing: border-box;" id="id2hg" class="row text-center" data-uuid="65965ec8390cc">
+              <div style="box-sizing: border-box;" id="iiq8f" class="col-lg-4 col-4" data-uuid="65965ec8390ce">
+                <h4 style="box-sizing: border-box;" id="iducf" class="text-uppercase font-questrial"
+                  data-uuid="65965ec8390d0" data-editable="true">
+                  Nhà Trai
+                </h4>
+                <h5 style="box-sizing: border-box;" id="ijeda" class="font-questrial mt-4" data-uuid="65965ec8390d3"
+                  data-editable="true">
+                  Ông: Trần Đình Nam
+                </h5>
+                <h5 style="box-sizing: border-box;" id="ipl5o" class="font-questrial" data-uuid="65965ec8390d5"
+                  data-editable="true">
+                  Bà: Bùi Thị Thu
+                </h5>
+              </div>
+              <div style="box-sizing: border-box;" id="izu8i" class="col-lg-4 col-4" data-uuid="65965ec8390d8"><img
+                  style="box-sizing: border-box; width: 250px; height: 100px; object-fit: contain;"
+                  data-uuid="65965ec8390db" height="100" width="250" data-editable="true" id="io6n2"
+                  src="http://127.0.0.1:5500/veoma.png"></div>
+              <div style="box-sizing: border-box;" id="i37vv" class="col-lg-4 col-4" data-uuid="65965ec8390dd">
+                <h4 style="box-sizing: border-box;" id="i7cmd" class="text-uppercase font-questrial"
+                  data-uuid="65965ec8390e0" data-editable="true">
+                  Nhà Gái
+                </h4>
+                <h5 style="box-sizing: border-box;" id="iv29f" class="font-questrial mt-4" data-uuid="65965ec8390e3"
+                  data-editable="true">
+                  Ông: Nguyễn Văn Giảng
+                </h5>
+                <h5 style="box-sizing: border-box;" id="ix9xl" class="font-questrial" data-uuid="65965ec8390e5"
+                  data-editable="true">
+                  Bà: Nguyễn Thị Xuân
+                </h5>
+              </div>
+            </div>
+            <div style="box-sizing: border-box;" id="i0z11" class="row text-center mt-4" data-uuid="65965ec8390e8">
+              <h3 style="box-sizing: border-box;" id="ix2bu" class="font-questrial fw-bold" data-uuid="65965ec8390ea"
+                data-editable="true">
+                TRÂN TRỌNG KÍNH MỜI
+              </h3>
+              <div style="box-sizing: border-box;" data-uuid="65965ec8390ed">
+                <h4 style="box-sizing: border-box; font-weight: 600; display: inline;"
+                  class="font-questrial vs-attendance-name-text" data-uuid="65965ec8390f0" data-editable="true"
+                  id="customer">
+                  ................................................................
+                </h4>
+              </div>
+              <h5 style="box-sizing: border-box;" id="ixdqk" class="font-questrial mt-1 fst-italic"
+                data-uuid="65965ec8390f5" data-editable="true">
+                (Tới dự Lễ Thành Hôn của hai con chúng tôi)
+              </h5>
+            </div>
+            <div style="box-sizing: border-box;" id="ip23r" class="row mt-5 d-flex align-items-center"
+              data-uuid="65965ec8390f8">
+              <div style="box-sizing: border-box;" id="ip6jg" class="col-lg-5 text-center" data-uuid="65965ec8390fb">
+                <h2 style="box-sizing: border-box;" id="irlfq" class="invitator-name" data-uuid="65965ec8390fe"
+                  data-editable="true">
+                  Trần Ngọc Hồi
+                </h2>
+              </div>
+              <div style="box-sizing: border-box;" id="i47kt" class="col-lg-2 text-center" data-uuid="65965ec839101">
+                <img style="box-sizing: border-box; width: 50px; height: 50px;" data-uuid="65965ec839103" height="50"
+                  width="50" id="ionwh6" data-editable="true" src="https://api.vesey.vn/templates/wendola1/heart.png"></div>
+              <div style="box-sizing: border-box;" id="io4aw" class="col-lg-5 text-center bride-name"
+                data-uuid="65965ec839106">
+                <h2 style="box-sizing: border-box;" id="iwvvi2" class="invitator-name" data-uuid="65965ec839109"
+                  data-editable="true">
+                  Nguyễn Thu Hiền
+                </h2>
+              </div>
+            </div>
+            <div style="box-sizing: border-box;" id="ipk3bq" class="text-center mt-5" data-uuid="65965ec83910d"><span
+                style="box-sizing: border-box;" id="id8r45" class="font-questrial" data-uuid="65965ec839110"
+                data-editable="true">Tổ chức vào lúc 16 giờ 00</span>
+              <h4 style="box-sizing: border-box;" id="impgo4" class="fw-bold font-questrial mt-4"
+                data-uuid="65965ec839113" data-editable="true">
+                Chủ Nhật, ngày 30 tháng 11 năm 2025
+              </h4>
+              <h5 style="box-sizing: border-box;" id="i8l0g7" class="font-questrial mt-3 fst-italic"
+                data-uuid="65965ec839116" data-editable="true">
+                (Tức ngày 11 tháng 10 năm 2025 Âm Lịch)
+              </h5>
+              <h5 style="box-sizing: border-box;" id="locationName" class="mt-4 font-questrial" data-uuid="65965ec839119"
+                data-editable="true">
+                .....
+              </h5>
+              <h5 style="box-sizing: border-box;" id="locationDetail" class="fw-bold font-questrial mt-3"
+                data-uuid="65965ec83911c" data-editable="true">
+                Nhà văn hóa thôn Phạm Khê xã Thanh Miện tỉnh Hải Dương
+              </h5>
+              <h5 style="box-sizing: border-box;" id="iw5e24" class="font-dancing mt-3" data-uuid="65965ec83911f"
+                data-editable="true">
+                Sự hiện diện của Quý khách là niềm vinh hạnh của gia đình
+                chúng tôi!
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="couple-section pt-0" data-uuid="65965ec839123" data-movable="true"
+      data-hidable="true">
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec839126">
+        <div style="box-sizing: border-box;" class="outer-box" data-uuid="65965ec839129">
+          <div style="box-sizing: border-box;" class="row" data-uuid="65965ec83912d">
+            <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInLeft;" id="irj7fy"
+              class="couple-block col-lg-6 col-md-12 col-sm-12 wow fadeInLeft animated animated"
+              data-uuid="65965ec839130">
+              <div style="box-sizing: border-box;" class="inner-box" data-uuid="65965ec839133">
+                <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec839137">
+                  <figure style="box-sizing: border-box; height: 414px;" id="i8r2m2" class="image"
+                    data-uuid="65965ec83913a"><img style="box-sizing: border-box; width: 100%; height: 100%;"
+                      data-uuid="65965ec83913d" alt="" src="http://127.0.0.1:5500/CREdit.png"
+                      data-editable="true"></figure>
+                  <div style="box-sizing: border-box;" class="couple-frame" data-uuid="65965ec839141"></div>
+                  <div style="box-sizing: border-box;" class="icon-border" data-uuid="65965ec839144"></div>
+                  <div style="box-sizing: border-box;" class="icon-flowers-2" data-uuid="65965ec839148"></div>
+                </div>
+                <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec83914b"><span
+                    style="box-sizing: border-box;" class="designation" data-uuid="65965ec83914f"
+                    data-editable="true">Chú rể</span>
+                  <h3 style="box-sizing: border-box;" class="name" data-uuid="65965ec839152" data-editable="true">Ngọc Hồi</h3>
+                  <div style="box-sizing: border-box;" class="text" data-uuid="65965ec839156" data-editable="true">
+                    Chú rể viết gì đó ở đây nhé.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style="box-sizing: border-box; visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;"
+              id="ia1s6g" class="couple-block style-two col-lg-6 col-md-12 col-sm-12 wow fadeInRight animated animated"
+              data-uuid="65965ec83915a" data-wow-delay="300ms">
+              <div style="box-sizing: border-box;" class="inner-box" data-uuid="65965ec83915e">
+                <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec839161">
+                  <figure style="box-sizing: border-box; height: 414px;" id="ix37qf" class="image"
+                    data-uuid="65965ec839165"><img style="box-sizing: border-box; width: 100%; height: 100%;"
+                      data-uuid="65965ec839169" alt="" src="http://127.0.0.1:5500/CDEdit.png"
+                      data-editable="true"></figure>
+                  <div style="box-sizing: border-box;" class="couple-frame" data-uuid="65965ec83916d"></div>
+                  <div style="box-sizing: border-box;" class="icon-border" data-uuid="65965ec839170"></div>
+                  <div style="box-sizing: border-box;" class="icon-flowers-2" data-uuid="65965ec839174"></div>
+                </div>
+                <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec839178"><span
+                    style="box-sizing: border-box;" class="designation" data-uuid="65965ec83917c"
+                    data-editable="true">Cô dâu</span>
+                  <h3 style="box-sizing: border-box;" class="name" data-uuid="65965ec839180" data-editable="true">Thu Hiền
+                  </h3>
+                  <div style="box-sizing: border-box;" class="text" data-uuid="65965ec839184" data-editable="true">
+                    Cô dâu cũng viết gì đó ở đây nhé.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="services-section" data-uuid="65965ec8392b3" data-movable="true"
+      data-hidable="true">
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec8392b8">
+        <div style="box-sizing: border-box;" class="sec-title text-center" data-uuid="65965ec8392be">
+          <div style="box-sizing: border-box;" class="icon-divider" data-uuid="65965ec8392c3"></div><span
+            style="box-sizing: border-box;" class="sub-title" data-uuid="65965ec8392c9" data-editable="true">Chương
+            trình</span>
+          <h2 style="box-sizing: border-box;" data-uuid="65965ec8392ce" data-editable="true">Tiệc cưới</h2>
+        </div>
+        <div style="box-sizing: border-box;" class="row" data-uuid="65965ec8392d4">
+          <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInUp;" id="i7f7zh"
+            class="services-block col-lg-4 col-md-12 col-sm-12 wow fadeInUp animated animated" data-uuid="65965ec8392d9"
+            data-movable="true" data-copyable="true">
+            <div style="box-sizing: border-box;" class="inner-box" data-uuid="65965ec8392df">
+              <div style="box-sizing: border-box;" class="frame" data-uuid="65965ec8392e5"></div>
+              <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec8392ea">
+                <figure style="box-sizing: border-box;" class="image" data-uuid="65965ec8392f0"><img
+                    style="box-sizing: border-box; width: 100%; height: 100%;" data-uuid="65965ec8392f6" alt="Image"
+                    src="http://127.0.0.1:5500/CDCR1Slider.jpg" data-editable="true"></figure>
+              </div>
+              <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec839307">
+                <h6 style="box-sizing: border-box;" class="title" data-uuid="65965ec83930d" data-editable="true">
+                  Đón khách &amp; chụp hình
+                </h6>
+                <div style="box-sizing: border-box;" class="date" data-uuid="65965ec839313" data-editable="true">
+                  Ngày 23 tháng 12, 2024 - Chủ nhật
+                </div>
+                <div style="box-sizing: border-box;" class="time" data-uuid="65965ec839319" data-editable="true">2:00 PM
+                  – 3:30 PM</div><span style="box-sizing: border-box;" class="icon-divider-3"
+                  data-uuid="65965ec83931f"></span>
+                <div style="box-sizing: border-box;" class="address" data-uuid="65965ec839325" data-editable="true">
+                  Nhà hàng Grand Royal
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="box-sizing: border-box; visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;"
+            id="ic9dvm" class="services-block col-lg-4 col-md-12 col-sm-12 wow fadeInUp animated animated"
+            data-uuid="65965ec839331" data-movable="true" data-copyable="true" data-wow-delay="300ms">
+            <div style="box-sizing: border-box;" class="inner-box" data-uuid="65965ec839337">
+              <div style="box-sizing: border-box;" class="frame" data-uuid="65965ec83933e"></div>
+              <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec839344">
+                <figure style="box-sizing: border-box;" class="image" data-uuid="65965ec83934a"><img
+                    style="box-sizing: border-box; width: 100%; height: 100%;" data-uuid="65965ec839350" alt="Image"
+                    src="http://127.0.0.1:5500/CDCR2Slider.jpg" data-editable="true"></figure>
+              </div>
+              <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec839363">
+                <h6 style="box-sizing: border-box;" class="title" data-uuid="65965ec839369" data-editable="true">Làm lễ
+                </h6>
+                <div style="box-sizing: border-box;" class="date" data-uuid="65965ec83936f" data-editable="true">
+                  Ngày 23 tháng 12, 2024 - Chủ nhật
+                </div>
+                <div style="box-sizing: border-box;" class="time" data-uuid="65965ec839375" data-editable="true">2:00 PM
+                  – 3:30 PM</div><span style="box-sizing: border-box;" class="icon-divider-3"
+                  data-uuid="65965ec83937c"></span>
+                <div style="box-sizing: border-box;" class="address" data-uuid="65965ec839382" data-editable="true">
+                  Nhà hàng Grand Royal
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="box-sizing: border-box; visibility: visible; animation-delay: 600ms; animation-name: fadeInUp;"
+            id="ilrnli" class="services-block col-lg-4 col-md-12 col-sm-12 wow fadeInUp animated animated"
+            data-uuid="65965ec83938f" data-movable="true" data-copyable="true" data-wow-delay="600ms">
+            <div style="box-sizing: border-box;" class="inner-box" data-uuid="65965ec839396">
+              <div style="box-sizing: border-box;" class="frame" data-uuid="65965ec83939c"></div>
+              <div style="box-sizing: border-box;" class="image-box" data-uuid="65965ec8393a2">
+                <figure style="box-sizing: border-box;" class="image" data-uuid="65965ec8393a9"><img
+                    style="box-sizing: border-box; width: 100%; height: 100%;" data-uuid="65965ec8393af" alt="Image"
+                    src="http://127.0.0.1:5500/CDCR3Slider.jpg" data-editable="true"></figure>
+              </div>
+              <div style="box-sizing: border-box;" class="content-box" data-uuid="65965ec8393d2">
+                <h6 style="box-sizing: border-box;" class="title" data-uuid="65965ec8393d9" data-editable="true">Nhập
+                  tiệc</h6>
+                <div style="box-sizing: border-box;" class="date" data-uuid="65965ec8393df" data-editable="true">
+                  Ngày 23 tháng 12, 2024 - Chủ nhật
+                </div>
+                <div style="box-sizing: border-box;" class="time" data-uuid="65965ec8393e6" data-editable="true">2:00 PM
+                  – 3:30 PM</div><span style="box-sizing: border-box;" class="icon-divider-3"
+                  data-uuid="65965ec8393ed"></span>
+                <div style="box-sizing: border-box;" class="address" data-uuid="65965ec8393f3" data-editable="true">
+                  Nhà hàng Grand Royal
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="gallery-section" data-uuid="65965ec839401" data-movable="true"
+      data-hidable="true">
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec839408">
+        <div style="box-sizing: border-box;" class="outer-box" data-uuid="65965ec83940f">
+          <div style="box-sizing: border-box;" class="bg bg-pattern-2" data-uuid="65965ec839416"></div>
+          <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInUp;" id="ih7mbi"
+            class="sec-title light text-center wow fadeInUp animated animated" data-uuid="65965ec83941c"><span
+              style="box-sizing: border-box;" class="sub-title" data-uuid="65965ec839423"
+              data-editable="true">Hình</span>
+            <h2 style="box-sizing: border-box;" data-uuid="65965ec83942a" data-editable="true">Kỉ niệm cưới</h2>
+          </div>
+          <div style="box-sizing: border-box;" class="images-box" data-uuid="65965ec839431">
+            <figure style="box-sizing: border-box; visibility: visible; animation-delay: 300ms; animation-name: zoomIn;"
+              id="i04zew" class="image image-1 wow zoomIn animated animated" data-uuid="65965ec839438"
+              data-wow-delay="300ms"><a style="box-sizing: border-box;" class="lightbox-image" data-uuid="65965ec83943f"
+                data-fancybox="gallery" href="http://127.0.0.1:5500/Slider1.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 340px;" id="iru4gh"
+                  data-uuid="65965ec839446" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider1.jpg"></a></figure>
+            <figure style="box-sizing: border-box; visibility: visible; animation-delay: 600ms; animation-name: zoomIn;"
+              id="iyobl1" class="image image-2 wow zoomIn animated animated" data-uuid="65965ec83944e"
+              data-wow-delay="600ms"><a style="box-sizing: border-box;" class="lightbox-image" data-uuid="65965ec839455"
+                data-fancybox="gallery" href="http://127.0.0.1:5500/Slider2.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 330px;" id="ioyuac"
+                  data-uuid="65965ec83945c" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider2.jpg"></a></figure>
+            <figure style="box-sizing: border-box; visibility: visible; animation-delay: 900ms; animation-name: zoomIn;"
+              id="idnj8f" class="image image-3 wow zoomIn animated animated" data-uuid="65965ec839463"
+              data-wow-delay="900ms"><a style="box-sizing: border-box;" class="lightbox-image" data-uuid="65965ec83946b"
+                data-fancybox="gallery" href="http://127.0.0.1:5500/Slider3.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 320px;" id="is7yo9"
+                  data-uuid="65965ec839472" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider3.jpg"></a></figure>
+            <figure
+              style="box-sizing: border-box; visibility: visible; animation-delay: 1200ms; animation-name: zoomIn;"
+              id="i4apn3" class="image image-4 wow zoomIn animated animated" data-uuid="65965ec839479"
+              data-wow-delay="1200ms"><a style="box-sizing: border-box;" class="lightbox-image"
+                data-uuid="65965ec839480" data-fancybox="gallery"
+                href="http://127.0.0.1:5500/Slider4.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 270px;" id="i7iu7y"
+                  data-uuid="65965ec839487" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider4.jpg"></a></figure>
+            <figure
+              style="box-sizing: border-box; visibility: visible; animation-delay: 1500ms; animation-name: zoomIn;"
+              id="i84wah" class="image image-5 wow zoomIn animated animated" data-uuid="65965ec83948f"
+              data-wow-delay="1500ms"><a style="box-sizing: border-box;" class="lightbox-image"
+                data-uuid="65965ec839496" data-fancybox="gallery"
+                href="http://127.0.0.1:5500/Slider5.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 322px;" id="idvst6"
+                  data-uuid="65965ec83949e" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider5.jpg"></a></figure>
+            <figure
+              style="box-sizing: border-box; visibility: visible; animation-delay: 1800ms; animation-name: zoomIn;"
+              id="i83uwf" class="image image-6 wow zoomIn animated animated" data-uuid="65965ec8394a5"
+              data-wow-delay="1800ms"><a style="box-sizing: border-box;" class="lightbox-image"
+                data-uuid="65965ec8394ad" data-fancybox="gallery"
+                href="http://127.0.0.1:5500/Slider6.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 289px;" id="irgtff"
+                  data-uuid="65965ec8394b4" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider6.jpg"></a></figure>
+            <figure
+              style="box-sizing: border-box; visibility: visible; animation-delay: 2100ms; animation-name: zoomIn;"
+              id="ifn9qx" class="image image-7 wow zoomIn animated animated" data-uuid="65965ec8394bc"
+              data-wow-delay="2100ms"><a style="box-sizing: border-box;" class="lightbox-image"
+                data-uuid="65965ec8394c3" data-fancybox="gallery"
+                href="http://127.0.0.1:5500/Slider7.jpg"><img
+                  style="box-sizing: border-box; width: 100%; height: 100%; max-width: 250px;" id="iysk0a"
+                  data-uuid="65965ec8394cb" data-editable="true" alt="Image"
+                  src="http://127.0.0.1:5500/Slider7.jpg"></a></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box; background: url('http://127.0.0.1:5500/Slider7.jpg'),
+        rgba(0, 0, 0, 0.6); background-attachment: fixed; background-size: cover; background-blend-mode: multiply;"
+      id="iucbno" class="call-to-action" data-uuid="65965ec8394d2" data-movable="true" data-hidable="true"
+      data-uploadable="true">
+      <div style="box-sizing: border-box;" class="icon-flowers" data-uuid="65965ec8394da"></div>
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec8394e1">
+        <div style="box-sizing: border-box;" class="outer-box" data-uuid="65965ec8394e9">
+          <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInUp;" id="iqhjbu"
+            class="content-box wow fadeInUp animated animated" data-uuid="65965ec8394f1"><i
+              style="box-sizing: border-box;" class="icon flaticon-marriage" data-uuid="65965ec8394f8"></i>
+            <h2 style="box-sizing: border-box;" class="title" data-uuid="65965ec839500" data-editable="true">
+              Chúng mình thật sự <br style="box-sizing: border-box;" data-uuid="65965ec839508">
+              Rất mong bạn đến chung vui với chúng mình
+            </h2>
+            <div style="box-sizing: border-box;" class="text" data-uuid="65965ec83950f" data-editable="true">
+              Hãy nói cho chúng mình biết ý định của bạn bằng cách gửi thông
+              tin dưới đây nhe!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box;" class="contact-section pt-0" data-uuid="65965ec839517" data-movable="true"
+      data-hidable="true">
+      <div style="box-sizing: border-box;" class="auto-container" data-uuid="65965ec83951f">
+        <div style="box-sizing: border-box;" class="row" data-uuid="65965ec839527">
+          <div style="box-sizing: border-box; visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;"
+            id="idtpzl" class="form-column col-lg-6 col-md-12 col-sm-12 order-lg-2 wow fadeInRight animated animated"
+            data-uuid="65965ec83952e" data-wow-delay="300ms">
+            <div style="box-sizing: border-box;" class="inner-column" data-uuid="65965ec839536">
+              <div style="box-sizing: border-box;" class="icon-leave bounce-x" data-uuid="65965ec83953e"></div>
+              <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInRight;" id="i1iqaw"
+                class="contact-form-one wow fadeInRight animated animated" data-uuid="65965ec839546">
+                <h6 style="box-sizing: border-box;" class="title" data-uuid="65965ec83954e" data-editable="true">Bạn sẽ
+                  đến chứ?</h6>
+                <form style="box-sizing: border-box;" class="vs-attendance-form" data-uuid="65965ec839556"
+                  id="hienhoi-contact" action="https://script.google.com/macros/s/AKfycbxhYX045T16CK6oJCRxN2w4h4Nu0FqmJNhE9RY-TEDkVcnjRByj-gyYp4cqGcgRbHTEyQ/exec" method="post">
+                  <div style="box-sizing: border-box;" class="row" data-uuid="65965ec83955e">
+                    <div style="box-sizing: border-box;" class="form-group col-4 col-lg-4 col-md-4 col-sm-4"
+                      data-uuid="65965ec839566">
+                      <div style="box-sizing: border-box;" class="radio-box" data-uuid="65965ec83956e"><label
+                          style="box-sizing: border-box;" class="custom-radio-box-two" data-uuid="65965ec839576">Có
+                          <input style="box-sizing: border-box;" data-uuid="65965ec83957e" name="decision" checked=""
+                            type="radio" value="yes"><span style="box-sizing: border-box;" class="checkmark"
+                            data-uuid="65965ec839586"></span></label></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-4 col-lg-4 col-md-4 col-sm-4"
+                      data-uuid="65965ec83958e">
+                      <div style="box-sizing: border-box;" class="radio-box" data-uuid="65965ec83959a"><label
+                          style="box-sizing: border-box;" class="custom-radio-box-two" data-uuid="65965ec8395a2">Không
+                          <input style="box-sizing: border-box;" data-uuid="65965ec8395aa" name="decision" value="no"
+                            type="radio"><span style="box-sizing: border-box;" class="checkmark"
+                            data-uuid="65965ec8395b3"></span></label></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-lg-12" data-uuid="65965ec8395e5">
+                      <div style="box-sizing: border-box;" class="input-outer" data-uuid="65965ec8395ed"><input
+                          style="box-sizing: border-box;" class="vs-attendance-name" data-uuid="65965ec8395f5"
+                          required="" placeholder="Tên của bạn" type="text"></div>
+                    </div>
+                    <h6 style="box-sizing: border-box;" class="title" data-uuid="65965ec839644" data-editable="true">
+                      Bạn là khách của?
+                    </h6>
+                    <div style="box-sizing: border-box;" class="form-group col-4 col-lg-4 col-md-4 col-sm-4"
+                      data-uuid="65965ec83964c">
+                      <div style="box-sizing: border-box;" class="radio-box" data-uuid="65965ec839655"><label
+                          style="box-sizing: border-box;" class="custom-radio-box-two" data-uuid="65965ec83965d">Cô dâu
+                          <input style="box-sizing: border-box;" data-uuid="65965ec839666" name="guest_of" checked=""
+                            type="radio" value="bride"><span style="box-sizing: border-box;" class="checkmark"
+                            data-uuid="65965ec83966f"></span></label></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-4 col-lg-4 col-md-4 col-sm-4"
+                      data-uuid="65965ec839677">
+                      <div style="box-sizing: border-box;" class="radio-box" data-uuid="65965ec839680"><label
+                          style="box-sizing: border-box;" class="custom-radio-box-two" data-uuid="65965ec839689">Chú rể
+                          <input style="box-sizing: border-box;" data-uuid="65965ec839691" name="guest_of" type="radio"
+                            value="groom"><span style="box-sizing: border-box;" class="checkmark"
+                            data-uuid="65965ec83969a"></span></label></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-lg-12" data-uuid="65965ec8396a3">
+                      <div style="box-sizing: border-box;" class="input-outer" data-uuid="65965ec8396ac"><select
+                          style="box-sizing: border-box; padding: 0 45px;" class="form-control vs-number-of-guests"
+                          id="ikmyj4" data-uuid="65965ec8396b5" name="guest">
+                          <option style="box-sizing: border-box;" id="iefvlr" data-uuid="65965ec8396be" selected=""
+                            disabled="">
+                            Số khách
+                          </option>
+                          <option style="box-sizing: border-box;" id="iu4jiy" data-uuid="65965ec8396c7">
+                            01
+                          </option>
+                          <option style="box-sizing: border-box;" id="i2ciwk" data-uuid="65965ec8396d0">
+                            02
+                          </option>
+                          <option style="box-sizing: border-box;" id="i8uh5t" data-uuid="65965ec8396d9">
+                            03
+                          </option>
+                          <option style="box-sizing: border-box;" id="iswbui" data-uuid="65965ec8396e2">
+                            04
+                          </option>
+                          <option style="box-sizing: border-box;" id="iq37l3" data-uuid="65965ec8396eb">
+                            05
+                          </option>
+                        </select></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-lg-12" data-uuid="65965ec8396f4">
+                      <div style="box-sizing: border-box;" class="input-outer" data-uuid="65965ec8396fd"><textarea
+                          style="box-sizing: border-box;" class="vs-attendance-message" data-uuid="65965ec839706"
+                          required="" placeholder="Lời chúc" name="message"></textarea></div>
+                    </div>
+                    <div style="box-sizing: border-box;" class="form-group col-lg-12" data-uuid="65965ec839710"><button
+                        style="box-sizing: border-box;" class="theme-btn btn-style-one" data-uuid="65965ec83971a"
+                        name="submit-form" type="submit"><span style="box-sizing: border-box;" class="btn-title"
+                          data-uuid="65965ec839723">Gửi</span></button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div style="box-sizing: border-box; visibility: visible; animation-name: fadeInLeft;" id="i5x46i"
+            class="video-column col-lg-6 col-md-12 wow fadeInLeft animated animated" data-uuid="65965ec83972d">
+            <div style="box-sizing: border-box;" class="inner-column" data-uuid="65965ec839736">
+              <div style="box-sizing: border-box;" class="video-box" data-uuid="65965ec839740">
+                <figure style="box-sizing: border-box;" class="image" data-uuid="65965ec839749"><img
+                    style="box-sizing: border-box; width: 100%; height: 100%;" data-uuid="65965ec839752" alt=""
+                    src="./wendola1/contact1-1.jpg" data-editable="true"></figure><a style="box-sizing: border-box;"
+                  class="play-btn vs-video-btn" data-uuid="65965ec83975c" data-caption="" data-fancybox=""
+                  href="https://www.youtube.com/watch?v=Fvae8nxzVz4"><i style="box-sizing: border-box;"
+                    class="icon fa fa-play" data-uuid="65965ec839766" aria-hidden="true"></i></a>
+                <div style="box-sizing: border-box;" class="icon-leaves-27 rotate-x" data-uuid="65965ec839770"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="box-sizing: border-box; text-align: center;" class="wpo-event-section section-padding"
+      data-uuid="65965ec83977c" data-hidable="true" data-movable="true" id="menu">
+      <div style="box-sizing: border-box;" class="pt-2 pb-4 food-menu" data-uuid="65965ec839786">
+        <div style="box-sizing: border-box; position: absolute; top: -50px; right: -50px; width: 300px; height: 153px;"
+          id="ij4jnx" data-uuid="65965ec83978f"><img
+            style="box-sizing: border-box; width: 100%; height: 100%; object-fit: fill;" id="ikbv4t"
+            data-uuid="65965ec839799" src="./wendola1/top-menu.svg"></div>
+        <div
+          style="box-sizing: border-box; position: absolute; bottom: -100px; transform: scale(-1) rotate(2deg); left: -150px; right: 0; width: 400px; height: 206px;"
+          id="iv0bsm" data-uuid="65965ec8397a2"><img
+            style="box-sizing: border-box; width: 100%; height: 100%; object-fit: fill;" id="ihb40t"
+            data-uuid="65965ec8397c3" src="./wendola1/bottom-menu.svg"></div>
+        <h2 style="box-sizing: border-box; padding-top: 100px; letter-spacing: 0.25rem; z-index: 1; font-size: 3rem;"
+          id="icaarp" data-uuid="65965ec8397ce" data-editable="true">
+          </p>
+      </div>
+  </div>
+  </section>
+  <section style="box-sizing: border-box; margin-top: 50px; padding-bottom: 200px;"
+    class="gift-section services-section" data-uuid="65965ec8398b3" data-hidable="true" data-movable="true"
+    id="event-2">
+    <div style="box-sizing: border-box;" id="iyt4t3" class="auto-container" data-uuid="65965ec8398be">
+      <div style="box-sizing: border-box;" class="sec-title text-center" data-uuid="65965ec8398c8">
+        <div style="box-sizing: border-box;" class="icon-divider" data-uuid="65965ec8398d2"></div><span
+          style="box-sizing: border-box;" class="sub-title" data-uuid="65965ec8398dd" data-editable="true">Gửi lời chúc
+        </span>
+        <h2 style="box-sizing: border-box;" data-uuid="65965ec8398e8" data-editable="true">Đến cô dâu &amp; chú rể</h2>
+        <span style="box-sizing: border-box; font-size: 1.25rem;" data-uuid="65965ec8398f2" data-editable="true"
+          id="itxqb8">Gửi mừng cưới sớm cho dâu và rể bằng mã QR dưới đây bạn yêu
+          nhé</span>
+      </div>
+      <div style="box-sizing: border-box; margin-bottom: 15px;" id="i0kjwt" class="text-center"
+        data-uuid="65965ec8398fd" data-copyable="true"><span style="box-sizing: border-box; display: block;" id="id8lut"
+          class="font-questrial" data-uuid="65965ec839908" data-editable="true">
+          Số tài khoản: 123456789
+        </span><span style="box-sizing: border-box; display: block;" id="ith22j" class="font-questrial mt-1"
+          data-uuid="65965ec839912" data-editable="true">
+          Chủ tài khoản: Tên cô dâu
+        </span><span style="box-sizing: border-box; display: block;" id="is6euz" class="font-questrial mt-1"
+          data-uuid="65965ec83991d" data-editable="true">
+          Ngân hàng:
+          <strong style="box-sizing: border-box;" id="ip37iv" data-uuid="65965ec839927" data-editable="true">Ngân
+            hàng</strong></span><img style="box-sizing: border-box; width: 250px; height: 250px; object-fit: contain;"
+          class="mt-4" data-uuid="65965ec839935" height="250" width="250" data-editable="true" id="imyb31" alt=""
+          src="./wendola1/qr-code-example.webp"></div>
+    </div>
+  </section>
+  </div>
+  <style></style>
+  <script defer=""
+    src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+    data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;c65170efc50c430eb66096f0ccf45a1a&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    new Date(),          // 1: Timestamp
+    data.decision,       // 2
+    data.name,           // 3
+    data.guest_of,       // 4
+    data.guest,          // 5
+    data.message         // 6
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: "success" }))
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader("Access-Control-Allow-Origin", "*");
+}
+
+
+ try {
+    // Lấy dữ liệu từ query params
+    const decision = e.parameter.decision || "";
+    const name = e.parameter.name || "";
+    const guest_of = e.parameter.guest_of || "";
+    const guest = e.parameter.guest || "";
+    const message = e.parameter.message || "";
+
+    // Mở Sheet theo ID và tên Sheet
+    const ss = SpreadsheetApp.openById("YOUR_SPREADSHEET_ID"); // Thay bằng ID sheet của bạn
+    const sheet = ss.getSheetByName("Sheet1"); // Thay bằng tên sheet của bạn
+
+    // Ghi dữ liệu vào sheet
+    sheet.appendRow([
+      new Date(),
+      decision,
+      name,
+      guest_of,
+      guest,
+      message
+    ]);
+
+    // Trả về JSON thành công
+    return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    // Bắt lỗi và trả về JSON
+    Logger.log(err);
+    return ContentService.createTextOutput(JSON.stringify({
+      status: 'error',
+      message: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
