@@ -83,10 +83,6 @@
       flex-direction: row;
     }
 
-    .caption-box{
-      visibility: visible;
-    }
-
     @media (max-width: 991.98px) {
       .banner-section .content-box .name .icon-heart {
         max-width: 300px;
@@ -100,7 +96,7 @@
       }
 
       .caption-box {
-        visibility: hidden;
+        display: none;
       }
     }
 
@@ -144,12 +140,19 @@
       const params = new URLSearchParams(window.location.search);
       const customer = params.get("customer");
       const locationid = params.get("type");
+      const qr = params.get("qr");
 
       var customerLabel = document.getElementById("customer");
       customerLabel.textContent = customer;
 
       var locationComp = document.getElementById('locationName');
       var locationDetailComp = document.getElementById('locationDetail');
+      var showQRElm = document.getElementById('event-2');
+
+      if(qr === '0'){
+        showQRElm.style.display = "none";
+      }
+
       if (locationid === '1') {
         locationComp.textContent = 'Tại gia đình Nhà Trai: ';
         locationDetailComp.textContent = 'Thôn Phạm Khê xã Thanh Miện Tỉnh Hải Phòng';
